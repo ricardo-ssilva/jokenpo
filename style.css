@@ -1,0 +1,38 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.game_screen {
+    display: flex;  
+
+    height: 350px;
+    margin-bottom: 30px;
+    width: 800px;
+    justify-content: space-between;
+}
+.player {
+    border: 2px solid black;
+    flex: 1;
+    margin: 50px;
+}
+.buttons {
+    display: flex;
+
+    height: 50px;
+    width: 500px;
+    justify-content: space-around;
+    align-items: center;
+}
+button {
+    width: 150px;
+    height: 50px;
+}
