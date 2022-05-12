@@ -1,18 +1,34 @@
 let scorePlayer = 0 
 let scoreComputer = 0
-function playerPlay (selection) {
+const btn = document.querySelectorAll('button')
+const pedra = btn[0]
+const papel = btn[1]
+const tesoura = btn[2]
 
-    let playerSelection = selection
-    playerSelection = selected(playerSelection)
+pedra.addEventListener('click', ()=>{
+    playerPlay('pedra')
+    document.querySelector('.player-1').style.backgroundImage = "url('/images/stone.png')"
+})
+papel.addEventListener('click', ()=>{
+    playerPlay('pedra')
+    document.querySelector('.player-1').style.backgroundImage = "url('/images/paper.png')"
+})
+tesoura.addEventListener('click', ()=>{
+    playerPlay('pedra')
+    document.querySelector('.player-1').style.backgroundImage = "url('/images/scissors.png')"
+})
 
+function playerPlay (a) {
+    let playerSelection = a
     console.log('Player:', playerSelection)
-    
-    let computerSelection =  computerPlay()
+    let computerSelection = computerPlay()
+    selected(computerSelection)
+    // let playerSelection = selection
+    // playerSelection = selected(playerSelection)
+    // let computerSelection =  computerPlay()
     console.log('Computer:', computerSelection)
-
     result(playerSelection, computerSelection)
-
-    console.log('  ')
+    // console.log('  ')
     clear(scorePlayer, scoreComputer)
 }
 function computerPlay() {
@@ -20,13 +36,16 @@ function computerPlay() {
     computerSelection = selected(computerSelection)
     return computerSelection
 }
-function selected (selection) {
-    if(selection == 0) {
-       return 'pedra'
-    } else if (selection == 1) {
-       return 'papel'
-    } else {
-       return 'tesoura'
+function selected (computerSelection) {
+    if(computerSelection == 0) {
+        document.querySelector('.computer').style.backgroundImage = "url('/images/stone.png')"
+        return 'pedra'
+    } else if (computerSelection == 1) {
+        document.querySelector('.computer').style.backgroundImage = "url('/images/paper.png')"
+        return 'papel'
+    } else if (computerSelection == 2) {
+        document.querySelector('.computer').style.backgroundImage = "url('/images/scissors.png')"
+        return 'tesoura'
     }
 }
 function result (playerSelection, computerSelection) {
@@ -41,11 +60,7 @@ function result (playerSelection, computerSelection) {
         score('dettora')
     }
 }
-
-
 function score (status){
-
-
     if(status == 'empate') {
         scorePlayer++
         scoreComputer++
@@ -57,10 +72,7 @@ function score (status){
     console.log(scorePlayer, scoreComputer)
 
     gameOver(scorePlayer, scoreComputer)
-
-
 }
-
 function gameOver (scorePlayer, scoreComputer) {
     if(scorePlayer == 5 && scoreComputer < 5) {
        alert('Você Ganhou!')
@@ -70,7 +82,6 @@ function gameOver (scorePlayer, scoreComputer) {
         alert('Empate!')  
     }
 }
-
 function clear() {
     if(scorePlayer == 5 || scoreComputer == 5) {
         scorePlayer = 0
